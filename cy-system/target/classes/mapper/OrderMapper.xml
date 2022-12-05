@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.it.system.mapper.OrderMapper">
+
+
+   <insert id="insert" parameterType="com.it.common.api.model.order.CyOrder">
+       insert into cy_order (id,name,order_num,order_type,create_time,state)
+        values (#{cyOrder.id},#{cyOrder.name},#{cyOrder.orderNum},#{cyOrder.orderType},#{cyOrder.createTime},#{cyOrder.state});
+   </insert>
+
+    <select id="queryList" resultType="com.it.common.api.model.order.CyOrder">
+        select id,name,order_num as orderNum,order_type as orderType,create_time as createTime from cy_order limit 0,10;
+    </select>
+
+    <update id="update" parameterType="com.it.common.api.model.order.CyOrder">
+        update cy_order SET state =#{order.state} where id =#{order.id}
+    </update>
+
+</mapper>
