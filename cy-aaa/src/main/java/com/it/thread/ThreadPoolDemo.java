@@ -15,17 +15,17 @@ public class ThreadPoolDemo {
     public static void main(String[] args) {
 
         ThreadPoolExecutor poolExecutor = new ThreadPoolExecutor(
+                2,
                 5,
-                10,
                 1L,
                 TimeUnit.SECONDS,
-                new ArrayBlockingQueue<>(100),
+                new ArrayBlockingQueue<>(10),
                 new ThreadPoolExecutor.CallerRunsPolicy()
         );
 
         //开始时间
         long ls = System.currentTimeMillis();
-        for (int i = 0; i < 110; i++) {
+        for (int i = 0; i < 50; i++) {
             //创建WorkerThread对象（WorkerThread类实现了Runnable 接口）
             Runnable worker = new MyRunnable("" + i);
             //执行Runnable

@@ -4,6 +4,7 @@ package com.it.message.listener;
 import lombok.AllArgsConstructor;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.springframework.kafka.annotation.KafkaListener;
+import org.springframework.kafka.support.Acknowledgment;
 import org.springframework.stereotype.Service;
 
 
@@ -16,8 +17,10 @@ public class TopicListener {
      * @param record
      */
     @KafkaListener(topics={"kafka-test"},groupId = "system-test")
-    public void listen(ConsumerRecord<String,String> record){
+    public void listen(ConsumerRecord<String,String> record, Acknowledgment ack){
         record.value();
         System.out.print(record.value());
+        //手动提交offset
+        ack.acknowledge();
     }
 }

@@ -11,8 +11,8 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
  */
 @SpringBootApplication
 @EnableFeignClients
-public class SyConsume2Application {
+public class SyProducerApplication {
     public static void main(String[] args) {
-        SpringApplication.run(SyConsume2Application.class);
+        SpringApplication.run(SyProducerApplication.class);
     }
 }
