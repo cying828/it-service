@@ -1,25 +1,18 @@
 server:
-  port: 4000
+  port: 4008
 
 spring:
   application:
     name: cy-common-message
   main:
     allow-bean-definition-overriding: true
-
-  kafka:
-    bootstrap-servers: 192.168.25.128:9092
-    producer:
-      retries: 0 #重试次数
-      acks: 1 #应答级别
-      batch-size: 16384 #批量大小
-      key-serializer: org.apache.kafka.common.serialization.StringSerializer
-      value-serializer: org.apache.kafka.common.serialization.StringSerializer
-    consumer:
-      group-id: default-group  #消费组id
-      auto-offset-reset: earliest
-      enable-auto-commit: true
-      auto-commit-interval: 100
-      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-      max-poll-records: 500
+  cloud:
+    nacos:
+      discovery:
+        server-addr: ${NACOS-HOST:zykj-register}:${NACOS-PORT:8848}
+      config:
+        server-addr: ${spring.cloud.nacos.discovery.server-addr}
+        file-extension: yml
+        shared-dataids: application-${spring.profiles.active}.${spring.cloud.nacos.config.file-extension}
+  profiles:
+    active: @spring.profiles.active@
