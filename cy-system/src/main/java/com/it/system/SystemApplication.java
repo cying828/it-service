@@ -17,8 +17,7 @@ import org.springframework.context.annotation.ComponentScan;
 @SpringCloudApplication
 @ComponentScan({
         "com.it.common.api.sentinel",
-        "com.it.system",
-        "com.it.common.data"})
+        "com.it.system"})
 @EnablecyFeignClients
 @EnablecyResourceServer
 @EnableAutoDataSourceProxy

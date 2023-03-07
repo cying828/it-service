@@ -1,6 +1,6 @@
-package com.it.consume.controller;
+package com.it.consume.service;
 
-import com.it.consume.handle.KafkaSendResultHandler;
+import com.it.message.handle.KafkaSendResultHandler;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 
@@ -15,12 +15,12 @@ public class ProducerServiceImpl implements ProducerService{
     private KafkaTemplate<String, Object> kafkaTemplate;
 
     @Override
-    public void sendKafkaMsg() {
+    public void sendKafkaMsg(String value) {
         try {
             //发送消息前配置回调
             kafkaTemplate.setProducerListener(producerListener);
             //发送消息改为同步添加.get()
-            kafkaTemplate.send("kafka-test","key","附带信息").get();
+            kafkaTemplate.send("kafka-test","cying",value).get();
         } catch (InterruptedException e) {
             e.printStackTrace();
         } catch (ExecutionException e) {

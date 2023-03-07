@@ -1,4 +1,4 @@
-package com.it.consume.handle;
+package com.it.message.handle;
 
 import org.apache.kafka.clients.producer.ProducerRecord;
 import org.apache.kafka.clients.producer.RecordMetadata;
